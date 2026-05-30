@@ -29,3 +29,8 @@ npm start
 - Réservation de chambres avec vérification des dates
 - Gestion des réservations
 - Tableau de bord administratif
+## Auteurs
+- Yousra - Backend & Frontend
+- Oumaima - Authentication & Forms
+- Marwa - Rooms & Admin Dashboard
+- Aya - Reservations & Home Page
