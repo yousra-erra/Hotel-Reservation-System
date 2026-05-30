@@ -1,3 +1,4 @@
+// Reservation Controller
 const db = require('../config/db');
 
 exports.createReservation = (req, res) => {
