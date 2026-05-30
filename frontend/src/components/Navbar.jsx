@@ -1,4 +1,4 @@
-// Navbar Component
+//  Navbar Component
 import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
