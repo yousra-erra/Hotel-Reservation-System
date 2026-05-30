@@ -1,0 +1,864 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+body {
+    background: #f4f4f4;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: #111;
+    flex-wrap: wrap;
+}
+
+.navbar h2 {
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links button {
+    padding: 10px 15px;
+    border: none;
+    background: gold;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+/* HERO */
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: gold;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 64px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero-desc {
+    font-size: 20px;
+    color: #ddd;
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero-btn-primary {
+    padding: 15px 35px;
+    background: gold;
+    color: #111;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-btn-primary:hover {
+    background: #e6c200;
+    transform: translateY(-3px);
+}
+
+.hero-btn-secondary {
+    padding: 15px 35px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-btn-secondary:hover {
+    background: white;
+    color: #111;
+    transform: translateY(-3px);
+}
+
+
+/* STATS SECTION */
+
+.stats-section {
+    background: #111;
+    padding: 50px 40px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.stats-item h2 {
+    font-size: 48px;
+    color: gold;
+    margin-bottom: 8px;
+}
+
+.stats-item p {
+    color: #aaa;
+    font-size: 16px;
+}
+
+
+/* SECTION HEADER */
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 40px;
+    color: #111;
+    margin-bottom: 12px;
+}
+
+.section-header p {
+    font-size: 18px;
+    color: #777;
+}
+
+
+/* HOME ROOMS SECTION */
+
+.home-rooms-section {
+    padding: 80px 50px;
+    background: #f9f9f9;
+}
+
+.home-rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.home-room-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.home-room-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.home-room-img-wrapper {
+    position: relative;
+}
+
+.home-room-img-wrapper img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.home-room-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    padding: 20px;
+    color: gold;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.home-room-info {
+    padding: 20px;
+}
+
+.home-room-info h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #111;
+}
+
+.home-room-info p {
+    color: #777;
+    font-size: 15px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.home-room-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #111;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.home-room-btn:hover {
+    background: #444;
+}
+
+
+/* ACTIVITIES */
+
+.activities-section {
+    padding: 80px 50px;
+    background: white;
+    text-align: center;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.activity-card {
+    cursor: pointer;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    background: white;
+}
+
+.activity-card:hover {
+    transform: scale(1.05);
+}
+
+.activity-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.activity-card h3 {
+    padding: 20px;
+    font-size: 18px;
+    color: #111;
+}
+
+.activity-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.activity-content {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.activity-content img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.activity-content h2 {
+    margin: 20px;
+}
+
+.activity-content p {
+    margin: 15px 20px;
+    line-height: 1.6;
+}
+
+
+/* CONTACT */
+
+.contact-section {
+    padding: 80px 50px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.contact-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.contact-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    margin-bottom: 10px;
+    color: #111;
+    font-size: 22px;
+}
+
+.contact-card p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* FOOTER */
+
+.footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 40px;
+    margin-top: 0;
+}
+
+
+/* FORMS */
+
+.form-container {
+    width: 400px;
+    background: white;
+    margin: 80px auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-container button {
+    padding: 12px;
+    border: none;
+    background: #111;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.input-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+
+/* ROOMS PAGE */
+
+.page {
+    padding: 50px;
+}
+
+.rooms-page {
+    padding: 40px;
+    text-align: center;
+}
+
+.rooms-page h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.search-input {
+    padding: 12px;
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.room-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.room-card:hover {
+    transform: translateY(-10px);
+}
+
+.room-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.room-card h2 {
+    margin-top: 20px;
+    font-size: 28px;
+}
+
+.room-card p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.room-card button {
+    margin: 20px 0;
+    padding: 12px 25px;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.room-card button:hover {
+    background: #444;
+}
+
+
+/* RESERVATIONS */
+
+.reservations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.reservation-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.reservation-card h2 {
+    margin-bottom: 20px;
+}
+
+.reservation-card p {
+    margin-bottom: 10px;
+}
+
+.reservation-card button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    background: red;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.no-reservations {
+    margin-top: 40px;
+    font-size: 18px;
+    color: #888;
+    text-align: center;
+}
+
+
+/* ADMIN */
+
+.admin-page {
+    padding: 50px;
+}
+
+.stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: #111;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+}
+
+.stat-card h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.admin-section {
+    margin-top: 50px;
+}
+
+.admin-section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.admin-reservation {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-reservation p {
+    margin-bottom: 8px;
+}
+
+.admin-room-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin-room-img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.admin-btn-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.add-room-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+}
+
+.add-room-form input,
+.add-room-form select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.room-preview {
+    text-align: center;
+}
+
+.room-preview img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.room-preview p {
+    color: #555;
+    font-size: 14px;
+}
+
+
+/* BUTTONS */
+
+.btn-delete {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    background: red;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-confirm {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    background: green;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-pending {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    background: orange;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* POPUP */
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    width: 350px;
+    position: relative;
+    animation: popupAnim 0.3s ease;
+}
+
+.popup-box h2 {
+    margin-bottom: 15px;
+}
+
+.popup-box p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.popup-buttons button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: black;
+    color: white;
+    font-size: 15px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: red;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@keyframes popupAnim {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* DATE GROUP */
+
+.date-group {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px;
+    text-align: left;
+}
+
+.date-group label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.date-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+
+/* 404 */
+
+.not-found {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.not-found h1 {
+    font-size: 100px;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.not-found p {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.not-found a {
+    padding: 12px 25px;
+    background: #111;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.not-found a:hover {
+    background: #444;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .hero h1 {
+        font-size: 36px;
+    }
+    .hero-desc {
+        font-size: 16px;
+    }
+    .stats {
+        flex-direction: column;
+    }
+    .form-container {
+        width: 90%;
+    }
+    .admin-room-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .home-rooms-section {
+        padding: 50px 20px;
+    }
+    .activities-section {
+        padding: 50px 20px;
+    }
+    .contact-section {
+        padding: 50px 20px;
+    }
+    .admin-page {
+        padding: 20px;
+    }
+}
