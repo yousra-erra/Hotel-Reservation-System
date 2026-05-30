@@ -12,5 +12,5 @@ Application web de réservation d'hôtel développée avec React et Node.js.
 ## Équipe
 - Yousra - Backend & Frontend
 - Oumaima - Authentication & Forms
-- Aya - Rooms & Admin Dashboard
-- Marwa - Reservations & Home Page
+- Marwa - Rooms & Admin Dashboard
+- Aya - Reservations & Home Page
