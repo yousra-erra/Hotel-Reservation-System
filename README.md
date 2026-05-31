@@ -1,7 +1,7 @@
 # Hotel Reservation System 🏨
 
 ## 1. Présentation du projet
-Hotel Reservation System est une application web permettant aux voyageurs de rechercher, consulter et réserver des chambres d'hôtel en ligne. Elle offre un tableau de bord d'administration pour gérer les chambres, réservations et utilisateurs. Public cible : voyageurs et gestionnaires d'hôtel.
+Hotel Reservation System est un site web permettant aux voyageurs de rechercher, consulter et réserver des chambres d'hôtel en ligne. Elle offre un tableau de bord d'administration pour gérer les chambres, réservations et utilisateurs. Public cible : voyageurs et gestionnaires d'hôtel.
 
 ## 2. Membres de l'équipe
 | Prénom  | Rôle Scrum | Contribution principale |
