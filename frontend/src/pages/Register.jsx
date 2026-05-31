@@ -1,10 +1,9 @@
-// Register Page 
+// Register Page
 import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
 function Register() {
-
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -15,9 +14,7 @@ function Register() {
 
         let validationErrors = {};
 
-        if (!name) {
-            validationErrors.name = '* Nom requis';
-        }
+        if (!name) validationErrors.name = '* Nom requis';
         if (!email) {
             validationErrors.email = '* L\'email est requis';
         } else if (!/^\S+@\S+\.\S+$/.test(email)) {
@@ -38,7 +35,7 @@ function Register() {
 
         try {
             const response = await axios.post(
-                'https://hotel-reservation-api-gio.vercel.app/api/auth/register',
+                `${process.env.REACT_APP_API_URL}/api/auth/register`,
                 { name, email, password }
             );
             localStorage.setItem('token', response.data.token);
@@ -69,30 +66,15 @@ function Register() {
             <form onSubmit={handleRegister}>
                 <div className="input-group">
                     {errors.name && <p className="error">{errors.name}</p>}
-                    <input
-                        type="text"
-                        placeholder="Nom"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
+                    <input type="text" placeholder="Nom" value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className="input-group">
                     {errors.email && <p className="error">{errors.email}</p>}
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+                    <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="input-group">
                     {errors.password && <p className="error">{errors.password}</p>}
-                    <input
-                        type="password"
-                        placeholder="Mot de passe"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                    <input type="password" placeholder="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <button type="submit">Registre</button>
             </form>
