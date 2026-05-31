@@ -1,3 +1,4 @@
+// Admin Dashboard
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
@@ -29,7 +30,7 @@ function AdminDashboard() {
 
     const fetchRooms = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/rooms');
+            const response = await axios.get('https://hotel-reservation-api-gio.vercel.app/api/rooms');
             setRooms(response.data);
         } catch (error) {
             console.log(error);
@@ -39,7 +40,7 @@ function AdminDashboard() {
     const fetchReservations = async () => {
         try {
             const response = await axios.get(
-                'http://localhost:5000/api/reservations',
+                'https://hotel-reservation-api-gio.vercel.app/api/reservations',
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setReservations(response.data);
@@ -51,7 +52,7 @@ function AdminDashboard() {
     const fetchUsers = async () => {
         try {
             const response = await axios.get(
-                'http://localhost:5000/api/auth/users',
+                'https://hotel-reservation-api-gio.vercel.app/api/auth/users',
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setUsers(response.data);
@@ -75,7 +76,7 @@ function AdminDashboard() {
         }
         try {
             await axios.post(
-                'http://localhost:5000/api/rooms',
+                'https://hotel-reservation-api-gio.vercel.app/api/rooms',
                 {
                     room_number: roomNumber,
                     type: roomType,
@@ -102,7 +103,7 @@ function AdminDashboard() {
     const deleteRoom = async (id) => {
         try {
             await axios.delete(
-                `http://localhost:5000/api/rooms/${id}`,
+                `https://hotel-reservation-api-gio.vercel.app/api/rooms/${id}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             toast.success('Chambre supprimée');
@@ -116,7 +117,7 @@ function AdminDashboard() {
     const cancelReservation = async (id) => {
         try {
             await axios.delete(
-                `http://localhost:5000/api/reservations/${id}`,
+                `https://hotel-reservation-api-gio.vercel.app/api/reservations/${id}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             toast.success('Réservation annulée');
@@ -130,7 +131,7 @@ function AdminDashboard() {
     const updateStatus = async (id, status) => {
         try {
             await axios.put(
-                `http://localhost:5000/api/reservations/${id}/status`,
+                `https://hotel-reservation-api-gio.vercel.app/api/reservations/${id}/status`,
                 { status },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

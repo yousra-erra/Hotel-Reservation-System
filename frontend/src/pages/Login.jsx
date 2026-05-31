@@ -1,5 +1,5 @@
 // Login Page 
- import { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
@@ -14,7 +14,7 @@ function Login() {
         e.preventDefault();
         try {
             const response = await axios.post(
-                'http://localhost:5000/api/auth/login',
+                'https://hotel-reservation-api-gio.vercel.app/api/auth/login',
                 { email, password }
             );
             localStorage.setItem('token', response.data.token);

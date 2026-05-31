@@ -1,3 +1,4 @@
+ // Rooms Page 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -23,7 +24,7 @@ function Rooms() {
 
     const fetchRooms = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/rooms');
+            const response = await axios.get('https://hotel-reservation-api-gio.vercel.app/api/rooms');
             setRooms(response.data);
         } catch (error) {
             console.log(error);
@@ -61,7 +62,7 @@ function Rooms() {
             const user = JSON.parse(localStorage.getItem('user'));
             const token = localStorage.getItem('token');
             await axios.post(
-                'http://localhost:5000/api/reservations',
+                'https://hotel-reservation-api-gio.vercel.app/api/reservations',
                 {
                     user_id: user.id,
                     room_id: selectedRoom.id,

@@ -1,3 +1,4 @@
+// Room Controller
 const db = require('../config/db');
 
 exports.getRooms = (req, res) => {
