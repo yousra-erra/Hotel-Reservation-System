@@ -31,11 +31,7 @@ function AdminDashboard() {
 
     const fetchRooms = async () => {
         try {
-<<<<<<< HEAD
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/rooms`);
-=======
-            const response = await axios.get('https://hotel-reservation-api-gio.vercel.app/api/rooms');
->>>>>>> d120248316b92e34913c98f7f774d38766e6b091
             setRooms(response.data);
         } catch (error) {
             console.log(error);
@@ -45,11 +41,7 @@ function AdminDashboard() {
     const fetchReservations = async () => {
         try {
             const response = await axios.get(
-<<<<<<< HEAD
                 `${process.env.REACT_APP_API_URL}/api/reservations`,
-=======
-                'https://hotel-reservation-api-gio.vercel.app/api/reservations',
->>>>>>> d120248316b92e34913c98f7f774d38766e6b091
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setReservations(response.data);
@@ -61,11 +53,7 @@ function AdminDashboard() {
     const fetchUsers = async () => {
         try {
             const response = await axios.get(
-<<<<<<< HEAD
                 `${process.env.REACT_APP_API_URL}/api/auth/users`,
-=======
-                'https://hotel-reservation-api-gio.vercel.app/api/auth/users',
->>>>>>> d120248316b92e34913c98f7f774d38766e6b091
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setUsers(response.data);
@@ -89,11 +77,7 @@ function AdminDashboard() {
         }
         try {
             await axios.post(
-<<<<<<< HEAD
                 `${process.env.REACT_APP_API_URL}/api/rooms`,
-=======
-                'https://hotel-reservation-api-gio.vercel.app/api/rooms',
->>>>>>> d120248316b92e34913c98f7f774d38766e6b091
                 {
                     room_number: roomNumber,
                     type: roomType,
@@ -120,11 +104,7 @@ function AdminDashboard() {
     const deleteRoom = async (id) => {
         try {
             await axios.delete(
-<<<<<<< HEAD
                 `${process.env.REACT_APP_API_URL}/api/rooms/${id}`,
-=======
-                `https://hotel-reservation-api-gio.vercel.app/api/rooms/${id}`,
->>>>>>> d120248316b92e34913c98f7f774d38766e6b091
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             toast.success('Chambre supprimée');
@@ -138,11 +118,7 @@ function AdminDashboard() {
     const cancelReservation = async (id) => {
         try {
             await axios.delete(
-<<<<<<< HEAD
                 `${process.env.REACT_APP_API_URL}/api/reservations/${id}`,
-=======
-                `https://hotel-reservation-api-gio.vercel.app/api/reservations/${id}`,
->>>>>>> d120248316b92e34913c98f7f774d38766e6b091
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             toast.success('Réservation annulée');
@@ -156,11 +132,7 @@ function AdminDashboard() {
     const updateStatus = async (id, status) => {
         try {
             await axios.put(
-<<<<<<< HEAD
                 `${process.env.REACT_APP_API_URL}/api/reservations/${id}/status`,
-=======
-                `https://hotel-reservation-api-gio.vercel.app/api/reservations/${id}/status`,
->>>>>>> d120248316b92e34913c98f7f774d38766e6b091
                 { status },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
