@@ -38,7 +38,7 @@ function Register() {
 
         try {
             const response = await axios.post(
-                'http://localhost:5000/api/auth/register',
+                'https://hotel-reservation-api-gio.vercel.app/api/auth/register',
                 { name, email, password }
             );
             localStorage.setItem('token', response.data.token);
