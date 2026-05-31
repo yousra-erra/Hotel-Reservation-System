@@ -104,15 +104,23 @@ exports.getUsers = (req, res) => {
 exports.deleteUser = (req, res) => {
     const { id } = req.params;
 
-    const sql = 'DELETE FROM users WHERE id = ?';
+    // D'abord supprimer les réservations de l'user
+    const deleteReservationsSql = 'DELETE FROM reservations WHERE user_id = ?';
 
-    db.query(sql, [id], (err, result) => {
+    db.query(deleteReservationsSql, [id], (err) => {
         if (err) return res.status(500).json(err);
 
-        if (result.affectedRows === 0) {
-            return res.status(404).json({ message: 'Utilisateur non trouvé' });
-        }
+        // Ensuite supprimer l'user
+        const sql = 'DELETE FROM users WHERE id = ? AND role != "admin"';
 
-        res.json({ message: 'Utilisateur supprimé avec succès' });
+        db.query(sql, [id], (err, result) => {
+            if (err) return res.status(500).json(err);
+
+            if (result.affectedRows === 0) {
+                return res.status(404).json({ message: 'Utilisateur introuvable' });
+            }
+
+            res.json({ message: 'Utilisateur supprimé avec succès' });
+        });
     });
 };
