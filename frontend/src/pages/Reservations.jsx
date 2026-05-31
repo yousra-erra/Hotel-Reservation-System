@@ -23,7 +23,7 @@ function Reservations() {
     const fetchReservations = async () => {
         try {
             const response = await axios.get(
-                'https://hotel-reservation-api-gio.vercel.app/api/reservations',
+                `${process.env.REACT_APP_API_URL}/api/reservations`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setReservations(response.data);
@@ -35,7 +35,7 @@ function Reservations() {
     const deleteReservation = async (id) => {
         try {
             await axios.delete(
-                `https://hotel-reservation-api-gio.vercel.app/api/reservations/${id}`,
+                `${process.env.REACT_APP_API_URL}/api/reservations/${id}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             toast.success('Réservation annulée');

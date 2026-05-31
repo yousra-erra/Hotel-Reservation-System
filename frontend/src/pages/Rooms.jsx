@@ -24,7 +24,7 @@ function Rooms() {
 
     const fetchRooms = async () => {
         try {
-            const response = await axios.get('https://hotel-reservation-api-gio.vercel.app/api/rooms');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/rooms`);
             setRooms(response.data);
         } catch (error) {
             console.log(error);
@@ -62,7 +62,7 @@ function Rooms() {
             const user = JSON.parse(localStorage.getItem('user'));
             const token = localStorage.getItem('token');
             await axios.post(
-                'https://hotel-reservation-api-gio.vercel.app/api/reservations',
+                `${process.env.REACT_APP_API_URL}/api/reservations`,
                 {
                     user_id: user.id,
                     room_id: selectedRoom.id,
