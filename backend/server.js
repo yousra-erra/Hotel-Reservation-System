@@ -1,9 +1,7 @@
 // Hotel Reservation System - Backend API
 const express = require('express');
 const cors = require('cors');
-
 const helmet = require('helmet');
-
 require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');
@@ -13,14 +11,16 @@ const reservationRoutes = require('./routes/reservationRoutes');
 const app = express();
 
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
-
 
 app.get('/', (req, res) => {
     res.send('Hotel Reservation API Running');
 });
-
 
 app.use('/api/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
