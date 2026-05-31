@@ -18,6 +18,7 @@ function AdminDashboard() {
     const [roomPrice, setRoomPrice] = useState('');
     const [confirmDelete, setConfirmDelete] = useState(null);
     const [confirmCancelReservation, setConfirmCancelReservation] = useState(null);
+    const [confirmDeleteUser, setConfirmDeleteUser] = useState(null);
 
     const user = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('token');
@@ -30,7 +31,7 @@ function AdminDashboard() {
 
     const fetchRooms = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/rooms');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/rooms`);
             setRooms(response.data);
         } catch (error) {
             console.log(error);
@@ -40,7 +41,7 @@ function AdminDashboard() {
     const fetchReservations = async () => {
         try {
             const response = await axios.get(
-                'http://localhost:5000/api/reservations',
+                `${process.env.REACT_APP_API_URL}/api/reservations`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setReservations(response.data);
@@ -52,7 +53,7 @@ function AdminDashboard() {
     const fetchUsers = async () => {
         try {
             const response = await axios.get(
-                'http://localhost:5000/api/auth/users',
+                `${process.env.REACT_APP_API_URL}/api/auth/users`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setUsers(response.data);
@@ -76,7 +77,7 @@ function AdminDashboard() {
         }
         try {
             await axios.post(
-                'http://localhost:5000/api/rooms',
+                `${process.env.REACT_APP_API_URL}/api/rooms`,
                 {
                     room_number: roomNumber,
                     type: roomType,
@@ -103,7 +104,7 @@ function AdminDashboard() {
     const deleteRoom = async (id) => {
         try {
             await axios.delete(
-                `http://localhost:5000/api/rooms/${id}`,
+                `${process.env.REACT_APP_API_URL}/api/rooms/${id}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             toast.success('Chambre supprimée');
@@ -117,7 +118,7 @@ function AdminDashboard() {
     const cancelReservation = async (id) => {
         try {
             await axios.delete(
-                `http://localhost:5000/api/reservations/${id}`,
+                `${process.env.REACT_APP_API_URL}/api/reservations/${id}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             toast.success('Réservation annulée');
@@ -131,7 +132,7 @@ function AdminDashboard() {
     const updateStatus = async (id, status) => {
         try {
             await axios.put(
-                `http://localhost:5000/api/reservations/${id}/status`,
+                `${process.env.REACT_APP_API_URL}/api/reservations/${id}/status`,
                 { status },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -139,6 +140,20 @@ function AdminDashboard() {
             fetchReservations();
         } catch (error) {
             toast.error('Erreur lors de la mise à jour');
+        }
+    };
+
+    const deleteUser = async (id) => {
+        try {
+            await axios.delete(
+                `${process.env.REACT_APP_API_URL}/api/auth/users/${id}`,
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            toast.success('Utilisateur supprimé');
+            setConfirmDeleteUser(null);
+            fetchUsers();
+        } catch (error) {
+            toast.error('Erreur lors de la suppression');
         }
     };
 
@@ -280,6 +295,14 @@ function AdminDashboard() {
                         <p>Nom : {u.name}</p>
                         <p>Email : {u.email}</p>
                         <p>Rôle : {u.role === 'admin' ? '👑 Admin' : '👤 Client'}</p>
+                        {u.role !== 'admin' && (
+                            <button
+                                className="btn-delete"
+                                onClick={() => setConfirmDeleteUser(u.id)}
+                            >
+                                Supprimer
+                            </button>
+                        )}
                     </div>
                 ))}
             </div>
@@ -290,16 +313,10 @@ function AdminDashboard() {
                         <h2>Confirmer la suppression</h2>
                         <p>Êtes-vous sûr de vouloir supprimer cette chambre ?</p>
                         <div className="popup-buttons">
-                            <button
-                                className="btn-delete"
-                                onClick={() => deleteRoom(confirmDelete)}
-                            >
+                            <button className="btn-delete" onClick={() => deleteRoom(confirmDelete)}>
                                 Oui, supprimer
                             </button>
-                            <button
-                                className="btn-pending"
-                                onClick={() => setConfirmDelete(null)}
-                            >
+                            <button className="btn-pending" onClick={() => setConfirmDelete(null)}>
                                 Annuler
                             </button>
                         </div>
@@ -313,17 +330,28 @@ function AdminDashboard() {
                         <h2>Confirmer l'annulation</h2>
                         <p>Êtes-vous sûr de vouloir annuler cette réservation ?</p>
                         <div className="popup-buttons">
-                            <button
-                                className="btn-delete"
-                                onClick={() => cancelReservation(confirmCancelReservation)}
-                            >
+                            <button className="btn-delete" onClick={() => cancelReservation(confirmCancelReservation)}>
                                 Oui, annuler
                             </button>
-                            <button
-                                className="btn-pending"
-                                onClick={() => setConfirmCancelReservation(null)}
-                            >
+                            <button className="btn-pending" onClick={() => setConfirmCancelReservation(null)}>
                                 Retour
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {confirmDeleteUser && (
+                <div className="popup-overlay">
+                    <div className="popup-box">
+                        <h2>Confirmer la suppression</h2>
+                        <p>Êtes-vous sûr de vouloir supprimer cet utilisateur ?</p>
+                        <div className="popup-buttons">
+                            <button className="btn-delete" onClick={() => deleteUser(confirmDeleteUser)}>
+                                Oui, supprimer
+                            </button>
+                            <button className="btn-pending" onClick={() => setConfirmDeleteUser(null)}>
+                                Annuler
                             </button>
                         </div>
                     </div>
