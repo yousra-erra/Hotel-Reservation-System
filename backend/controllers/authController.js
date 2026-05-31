@@ -1,9 +1,9 @@
-//  Auth Controller 
+// Auth Controller
 const db = require('../config/db');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-exports.registerUser = async(req, res) => {
+exports.registerUser = async (req, res) => {
     try {
         let { name, email, password } = req.body;
 
@@ -26,7 +26,7 @@ exports.registerUser = async(req, res) => {
 
         const checkUserSql = 'SELECT * FROM users WHERE email = ?';
 
-        db.query(checkUserSql, [email], async(err, results) => {
+        db.query(checkUserSql, [email], async (err, results) => {
             if (err) return res.status(500).json(err);
 
             if (results.length > 0) {
@@ -40,8 +40,10 @@ exports.registerUser = async(req, res) => {
             db.query(sql, [name, email, hashedPassword], (err, result) => {
                 if (err) return res.status(500).json(err);
 
-                const token = jwt.sign({ id: result.insertId, role: 'client' },
-                    process.env.JWT_SECRET, { expiresIn: '7d' }
+                const token = jwt.sign(
+                    { id: result.insertId, role: 'client' },
+                    process.env.JWT_SECRET,
+                    { expiresIn: '7d' }
                 );
 
                 res.status(201).json({
@@ -67,7 +69,7 @@ exports.loginUser = (req, res) => {
 
     const sql = 'SELECT * FROM users WHERE email = ?';
 
-    db.query(sql, [email], async(err, results) => {
+    db.query(sql, [email], async (err, results) => {
         if (err) return res.status(500).json(err);
 
         if (results.length === 0) {
@@ -81,8 +83,10 @@ exports.loginUser = (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
-        const token = jwt.sign({ id: user.id, role: user.role },
-            process.env.JWT_SECRET, { expiresIn: '7d' }
+        const token = jwt.sign(
+            { id: user.id, role: user.role },
+            process.env.JWT_SECRET,
+            { expiresIn: '7d' }
         );
 
         res.json({
@@ -98,5 +102,31 @@ exports.getUsers = (req, res) => {
     db.query(sql, (err, results) => {
         if (err) return res.status(500).json(err);
         res.json(results);
+    });
+};
+
+exports.deleteUser = (req, res) => {
+    const { id } = req.params;
+
+    // Vérifier que ce n'est pas un admin
+    const checkSql = 'SELECT * FROM users WHERE id = ?';
+
+    db.query(checkSql, [id], (err, results) => {
+        if (err) return res.status(500).json(err);
+
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'Utilisateur introuvable' });
+        }
+
+        if (results[0].role === 'admin') {
+            return res.status(403).json({ message: 'Impossible de supprimer un admin' });
+        }
+
+        const sql = 'DELETE FROM users WHERE id = ?';
+
+        db.query(sql, [id], (err) => {
+            if (err) return res.status(500).json(err);
+            res.json({ message: 'Utilisateur supprimé avec succès' });
+        });
     });
 };
